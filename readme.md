@@ -10,7 +10,13 @@ Code (to be) presented in Bangalore R Local Meetup
 * Install required R and Python packages used in the Document
 * `Knit`/`Render` the `Rmd` file to generate the output document
 
-
 ## Why this project?
 
-Simply to show you can use Python inside R seamlessly and innovate you new solutions to your problems
+Simply to show you can use Python inside R seamlessly and innovate new solutions to your problems. Kind of creating a new superhero! 
+
+![Jack-Jack Parr](jack-jacc Parr.jpg)
+
+## Output
+
+This code has been used to render the `Rmd` (Rmarkdown) into both [PDF](py_plus_r.pdf) and [HTML](https://htmlpreview.github.io/?https://github.com/amrrs/python_plus_r_brug/blob/master/py_plus_r.html)
+
