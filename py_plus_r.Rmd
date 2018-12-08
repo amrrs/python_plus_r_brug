@@ -12,7 +12,7 @@ output:
 
 ```{r setup, include=FALSE}
 library(reticulate) #the superpower bridges python and R
-use_python("/usr/local/bin/python3")
+use_python("/usr/local/bin/python3") #give your python path here
 knitr::opts_chunk$set(echo = TRUE)
 knitr::knit_engines$set(python = reticulate::eng_python)
 ```
