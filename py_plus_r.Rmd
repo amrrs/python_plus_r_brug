@@ -2,12 +2,12 @@
 title: "Combining the power of Python with R"
 output: 
     pdf_document:
+        
         highlight: tango
         toc: True
     html_document:
         highlight: tango
         toc: True
-
 ---
 
 ```{r setup, include=FALSE}
@@ -19,12 +19,24 @@ knitr::knit_engines$set(python = reticulate::eng_python)
 
 # R + Py
 
-This is a simple (could be called, `naive` as well) attempt to show how we can combine the power of `Python` with `R` and  create a new superpower.
+This is a simple (could be called, `naive` as well) attempt to show how we can combine the power of `Python` with `R` and  create a new superpower. 
 
-![Jack-Jack Parr](jack-jacc Parr.jpg)
+![Jack-Jack Parr](jack-jacc Parr.jpg) Like this one, If you have watched **The Incredibles** before!
 
-Like this one, If you have watched **The Incredibles** before!
 
+# About this Dataset
+
+This dataset contains a bunch of tweet that came with this tag **#JustDoIt** after **Nike** released the ad campaign with Colin Kaepernick that turned controversial. 
+
+![Nike Ad Campaign](Kaepernick-Nike-Ad-sg-img.jpg)
+
+Dataset source: [https://www.kaggle.com/eliasdabbas/5000-justdoit-tweets-dataset](https://www.kaggle.com/eliasdabbas/5000-justdoit-tweets-dataset)
+
+# Superstar - Reticulate
+
+The superstar who's making this possible is the R package `reticulate` by RStudio.
+
+*Let us start with th code!!*
 
 # The R Code
 
@@ -33,9 +45,11 @@ Like this one, If you have watched **The Incredibles** before!
 
 
 library(tidyverse)
+library(ggthemes)
+library(knitr)
 tweets <- read_csv("justdoit_tweets_2018_09_07_2.csv")
 text <- tweets$tweet_full_text
-text_10 <- text[1:10]
+text_10 <- text[sample(1:nrow(tweets),100)]
 
 ```
 
@@ -49,7 +63,6 @@ doc = nlp(str(r.text_10))
 
 pos_df = pd.DataFrame(columns = ["text","pos","lemma"])
 
-print(pos_df)
 
 for token in doc:
     df1 = pd.DataFrame({"text" : token.text, "pos" : token.pos_, "lemma" : token.lemma_}, index = [0])
@@ -60,9 +73,9 @@ for token in doc:
 #print(pos_df) 
 ```
 
-# Now, Again the R Code
- 
-```{r}
+# Now, Again The R Code
+
+```{r warning=FALSE, message=FALSE}
 #data.frame(token = as.vector(py$tokens)) %>% count(token) %>% arrange(desc(n))
 
 py$pos_df %>% 
@@ -76,4 +89,34 @@ py$pos_df %>%
 
 ```
  
+# Now, Again The Python Code
+
+```{python warning=FALSE, message=FALSE}
+
+
+ent_df = pd.DataFrame(columns = ["text","label"])
+
+
+for ent in doc.ents:
+    df1 = pd.DataFrame({"text" : ent.text,   "label" : ent.label_}, index = [0])
+    #print(token.text, token.pos_)
+    #print(df1)
+    ent_df = pd.concat([ent_df,df1])
+
+```
+  
+
+# One Final Time, The R Code
+
+```{r warning=FALSE, message=FALSE}
+
+py$ent_df %>% 
+  count(label) %>% 
+  ggplot() + geom_bar(aes(label,n), stat = "identity") +
+  #coord_flip() +
+  theme_solarized() +
+  labs(title = "Entity Recognition",
+       subtitle = "NLP using Python space - Graphics using R ggplot2")
+
+```  
  
