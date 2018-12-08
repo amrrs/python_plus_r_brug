@@ -14,7 +14,7 @@ Code (to be) presented in Bangalore R Local Meetup
 
 Simply to show you can use Python inside R seamlessly and innovate new solutions to your problems. Kind of creating a new superhero! 
 
-![Jack-Jack Parr](jack-jacc Parr.jpg)
+![Jack-Jack Parr](jack-jacc_Parr.jpg)
 
 ## Output
 

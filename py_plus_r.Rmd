@@ -21,7 +21,7 @@ knitr::knit_engines$set(python = reticulate::eng_python)
 
 This is a simple (could be called, `naive` as well) attempt to show how we can combine the power of `Python` with `R` and  create a new superpower. 
 
-![Jack-Jack Parr](jack-jacc Parr.jpg) Like this one, If you have watched **The Incredibles** before!
+![Jack-Jack Parr](jack-jacc_Parr.jpg) Like this one, If you have watched **The Incredibles** before!
 
 
 # About this Dataset
