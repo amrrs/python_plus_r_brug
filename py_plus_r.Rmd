@@ -1,13 +1,12 @@
 ---
 title: "Combining the power of Python with R"
-output: 
-    pdf_document:
-        
-        highlight: tango
-        toc: True
-    html_document:
-        highlight: tango
-        toc: True
+output:
+  html_document:
+    df_print: paged
+    toc: yes
+  pdf_document:
+    highlight: tango
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -36,7 +35,7 @@ Dataset source: [https://www.kaggle.com/eliasdabbas/5000-justdoit-tweets-dataset
 
 The superstar who's making this possible is the R package `reticulate` by RStudio.
 
-*Let us start with th code!!*
+*Let us start with the code!!*
 
 # The R Code
 
@@ -49,6 +48,7 @@ library(ggthemes)
 library(knitr)
 tweets <- read_csv("justdoit_tweets_2018_09_07_2.csv")
 text <- tweets$tweet_full_text
+set.seed(123)
 text_10 <- text[sample(1:nrow(tweets),100)]
 
 ```
@@ -113,10 +113,13 @@ for ent in doc.ents:
 py$ent_df %>% 
   count(label) %>% 
   ggplot() + geom_bar(aes(label,n), stat = "identity") +
-  #coord_flip() +
-  theme_solarized() +
+  coord_flip() +
+  #theme_solarized() +
+  theme_fivethirtyeight() +
   labs(title = "Entity Recognition",
        subtitle = "NLP using Python space - Graphics using R ggplot2")
+
+
 
 ```  
  

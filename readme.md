@@ -1,6 +1,6 @@
 # Combining the Power of R with Python
 
-Code (to be) presented in Bangalore R Local Meetup 
+Code presented in Bangalore R Local Meetup 
 
 ## How to use this project?
 
